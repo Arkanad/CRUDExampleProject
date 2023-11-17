@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Entities;
@@ -12,9 +13,10 @@ namespace ServiceContracts.DTO
     public class PersonAddRequest
     {
         [Required]
+        [MinLength(3,ErrorMessage = "Name length should have at least 3 characters")]
         public string? PersonName { get; set; }
         [Required]
-        [EmailAddress]
+        [EmailAddress (ErrorMessage = "Email should be in valid format")]
         public string? Email { get; set; }
         
         public DateTime? DateOfBirth { get; set; }

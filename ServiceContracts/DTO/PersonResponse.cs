@@ -49,7 +49,7 @@ namespace ServiceContracts.DTO
 
         public override string ToString()
         {
-            return $"Person Name: {PersonName}, Person Id: {PersonId}, Email: {Email}, CountryId:{CountryId}, CountryName: {CountryName}, Gender: {Gender}, Address:{Address}, ReceiveNewLetter:{ReceiveNewLetter}, DateOfBirth: {DateOfBirth}";
+            return $"Person Name: {PersonName}, Person Id: {PersonId}, Email: {Email}, CountryId:{CountryId}, CountryName: {CountryName}, Gender: {Gender}, Address:{Address}, ReceiveNewLetter:{ReceiveNewLetter}, DateOfBirth: {DateOfBirth?.ToString("dd MMM yyyy")}";
         }
 
         public PersonUpdateRequest ToPersonUpdateRequest()

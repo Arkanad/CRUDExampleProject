@@ -12,13 +12,21 @@
             <select class="form-input" name="searchBy">
                 @foreach (var field in ViewBag.SearchFields)
                 {
-                    <option value="@field.Key">@field.Value</option>
+                    if (field.Key == ViewBag.CurrentSearchBy)
+                    {
+                        <option value="@field.Key" selected="selected">@field.Value</option>
+                    }
+                    else
+                    {
+                        <option value="@field.Key">@field.Value</option>
+                    }
                 }
+                
             </select>
         </div>
         
         <div class="flex-1">
-            <input type="search" , id="Search" , class="form-input" , placeholder="Search" name="searchString" />
+            <input type="search" , id="Search" , class="form-input" , placeholder="Search" name="searchString" value= "@ViewBag.CurrentSearchString" />
         </div>
         
         <div class="flex-1">
@@ -29,7 +37,26 @@
     <table class="w-100 table mt">
         <thead>
         <tr>
-            <th>Person Name</th>
+             @if (ViewBag.CurrentSortBy == nameof(PersonResponse.PersonName) && ViewBag.CurrentSortOrder == SortOrderOptions.Asc.ToString())
+            {
+                <th>
+                        <a href="~/persons/index?searchBy=@ViewBag.CurrentSearchBy&searchString=@ViewBag.CurrentSearchString&sortBy=@nameof(PersonResponse.PersonName)&sortOrder=@nameof(SortOrderOptions.Desc)">Person Name</a>
+                        <i class="fa-solid fa-sort-up"></i>
+                </th>
+            }
+            else if (ViewBag.CurrentSortBy == nameof(PersonResponse.PersonName) && ViewBag.CurrentSortOrder == SortOrderOptions.Desc.ToString())
+            {
+                <th>
+                    <a href="~/persons/index?sortBy=@nameof(PersonResponse.PersonName)&sortOrder=@nameof(SortOrderOptions.Asc)&searchBy=@ViewBag.CurrentSearchBy&searchString=@ViewBag.CurrentSearchString">Person Name</a>
+                    <i class="fa-solid fa-sort-down"></i>
+                </th> 
+            }
+            else
+            {
+                    <th>
+                <a href="~/persons/index?CurrentSortBy=@nameof(PersonResponse.PersonName)&CurrentSortOrder=@nameof(SortOrderOptions.Desc)&CurrentSearchBy=@ViewBag.CurrentSearchBy&CurrentSearchString=@ViewBag.CurrentSearchString">Person Name</a>
+                </th> 
+            }
             <th>Email</th>
             <th>Date of Birth</th>
             <th>Age</th>
@@ -45,7 +72,7 @@
             <tr>
                 <td>@person.PersonName</td>
                 <td>@person.Email</td>
-                <td>@person.DateOfBirth?.ToString("MM/dd/yyyy")</td>
+                <td>@person.DateOfBirth?.ToString("dd MMM yyyy")</td>
                 <td>@person.Age</td>
                 <td>@person.Gender</td>
                 <td>@person.CountryName</td>

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using Entities;
 using ServiceContracts;
 using ServiceContracts.DTO;
@@ -22,7 +23,7 @@ namespace Services
                 {
                     PersonName = "Zelig",
                     Email = "zasty0@wiley.com",
-                    DateOfBirth = DateTime.Parse("27/08/1990"),
+                    DateOfBirth = DateTime.Parse("27-08-1990"),
                     Gender = "Male",
                     Address = "68822 Dennis Avenue",
                     ReceiveNewLetter = true,
@@ -33,7 +34,7 @@ namespace Services
                 {
                     PersonName = "Humphrey",
                     Email = "hwinsley1@ifeng.com",
-                    DateOfBirth = DateTime.Parse("03/03/2000"),
+                    DateOfBirth = DateTime.Parse("03-03-2000"),
                     Gender = "Male",
                     Address = "47 Troy Circle",
                     ReceiveNewLetter = false,
@@ -44,7 +45,7 @@ namespace Services
                 {
                     PersonName = "Beverlee",
                     Email = "bounsworth2@sphinn.com",
-                    DateOfBirth = DateTime.Parse("27/08/1990"),
+                    DateOfBirth = DateTime.Parse("27-08-1990"),
                     Gender = "Female",
                     Address = "3152 Grim Crossing",
                     ReceiveNewLetter = true,
@@ -55,7 +56,7 @@ namespace Services
                 {
                     PersonName = "Chelsey",
                     Email = "calbon3@theglobeandmail.com",
-                    DateOfBirth = DateTime.Parse("17/09/1992"),
+                    DateOfBirth = DateTime.Parse("17-09-1992"),
                     Gender = "Female",
                     Address = "68822 Dennis Avenue",
                     ReceiveNewLetter = true,
@@ -66,7 +67,7 @@ namespace Services
                 {
                     PersonName = "Emmalee",
                     Email = "enimmo4@webeden.co.uk",
-                    DateOfBirth = DateTime.Parse("19/03/1998"),
+                    DateOfBirth = DateTime.Parse("19-03-1998"),
                     Gender = "Female",
                     Address = "75 Old Gate Road",
                     ReceiveNewLetter = false,
@@ -77,7 +78,7 @@ namespace Services
                 {
                     PersonName = "Linzy",
                     Email = "ljack5@nationalgeographic.com",
-                    DateOfBirth = DateTime.Parse("27/07/1993"),
+                    DateOfBirth = DateTime.Parse("27-07-1993"),
                     Gender = "Female",
                     Address = "4 Larry Court",
                     ReceiveNewLetter = true,
@@ -153,8 +154,7 @@ namespace Services
 
                 case nameof(PersonResponse.DateOfBirth):
                     matchingPersons = allPersons.Where(temp =>
-                        (temp.DateOfBirth != null ? temp.DateOfBirth.Value.ToString("yy-MM-dd").Contains(searchString, StringComparison.OrdinalIgnoreCase)
-                            : true)).ToList();
+                        (temp.DateOfBirth != null ? temp.DateOfBirth.Value.ToString("dd MMMM yyyy").Contains(searchString, StringComparison.OrdinalIgnoreCase): true)).ToList();
                     break;
 
                 case nameof(PersonResponse.CountryId):
@@ -173,7 +173,6 @@ namespace Services
                 default: matchingPersons = allPersons;
                     break;
             }
-
 
             return matchingPersons;
         }

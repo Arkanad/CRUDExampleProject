@@ -7,6 +7,7 @@
 <form action="~/persons/index", method="get">   
     <h1>Persons</h1>
     
+    <a href="~/persons/create">Create Person</a>
     <div class="box flex">
         <div class="flex-1">
             <select class="form-input" name="searchBy">
@@ -37,33 +38,46 @@
     <table class="w-100 table mt">
         <thead>
         <tr>
-             @if (ViewBag.CurrentSortBy == nameof(PersonResponse.PersonName) && ViewBag.CurrentSortOrder == SortOrderOptions.Asc.ToString())
-            {
-                <th>
-                        <a href="~/persons/index?searchBy=@ViewBag.CurrentSearchBy&searchString=@ViewBag.CurrentSearchString&sortBy=@nameof(PersonResponse.PersonName)&sortOrder=@nameof(SortOrderOptions.Desc)">Person Name</a>
-                        <i class="fa-solid fa-sort-up"></i>
-                </th>
-            }
-            else if (ViewBag.CurrentSortBy == nameof(PersonResponse.PersonName) && ViewBag.CurrentSortOrder == SortOrderOptions.Desc.ToString())
-            {
-                <th>
-                    <a href="~/persons/index?sortBy=@nameof(PersonResponse.PersonName)&sortOrder=@nameof(SortOrderOptions.Asc)&searchBy=@ViewBag.CurrentSearchBy&searchString=@ViewBag.CurrentSearchString">Person Name</a>
-                    <i class="fa-solid fa-sort-down"></i>
-                </th> 
-            }
-            else
-            {
-                    <th>
-                <a href="~/persons/index?CurrentSortBy=@nameof(PersonResponse.PersonName)&CurrentSortOrder=@nameof(SortOrderOptions.Desc)&CurrentSearchBy=@ViewBag.CurrentSearchBy&CurrentSearchString=@ViewBag.CurrentSearchString">Person Name</a>
-                </th> 
-            }
-            <th>Email</th>
-            <th>Date of Birth</th>
-            <th>Age</th>
-            <th>Gender</th>
-            <th>Country</th>
-            <th>Address</th>
-            <th>Receive New Letters</th>
+            @await Html.PartialAsync("_GridColumnHeader",new ViewDataDictionary(ViewData)
+                   {
+                       {"ColumnName", nameof(PersonResponse.PersonName)},
+                       {"DisplayName", "Person Name"},
+                   })
+            @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+                   {
+                       { "ColumnName", nameof(PersonResponse.Email)},
+                       { "DisplayName", "Email" },
+                   })
+            @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+                   {
+                       { "ColumnName", nameof(PersonResponse.DateOfBirth)},
+                       { "DisplayName", "Date of Birth" },
+                   })
+            @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+                   {
+                       { "ColumnName", nameof(PersonResponse.Age) },
+                       { "DisplayName", "Age" },
+                   })
+            @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+                   {
+                       { "ColumnName", nameof(PersonResponse.Gender) },
+                       { "DisplayName", "Gender" },
+                   })
+            @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+                   {
+                       { "ColumnName", nameof(PersonResponse.CountryName) },
+                       { "DisplayName", "CountryName" },
+                   })
+            @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+                   {
+                       { "ColumnName", nameof(PersonResponse.Address) },
+                       { "DisplayName", "Address" },
+                   })
+            @await Html.PartialAsync("_GridColumnHeader", new ViewDataDictionary(ViewData)
+                   {
+                       { "ColumnName", nameof(PersonResponse.ReceiveNewLetter) },
+                       { "DisplayName", "Receive News Letters" },
+                   })
         </tr>
         </thead>
         <tbody>

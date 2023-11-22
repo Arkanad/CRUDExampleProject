@@ -4,7 +4,7 @@
     ViewBag.Title = "Persons";
 }
 
-<form action="~/persons/index", method="get">   
+<form asp-controller="Persons" asp-action="Index" action="~/persons/index", method="get">   
     <h1>Persons</h1>
     
     <a href="~/persons/create">Create Person</a>
@@ -20,7 +20,7 @@
                     else
                     {
                         <option value="@field.Key">@field.Value</option>
-                    }
+                    } 
                 }
                 
             </select>

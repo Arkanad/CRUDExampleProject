@@ -19,7 +19,7 @@ namespace ServiceContracts.DTO
         public Guid? CountryId { get; set; }
         public string? CountryName { get; set; }
         public string? Address { get; set; }
-        public bool ReceiveNewLetter { get; set; }
+        public bool ReceiveNewsLetters { get; set; }
         public double? Age { get; set; }
 
     
@@ -39,7 +39,7 @@ namespace ServiceContracts.DTO
 
             PersonResponse person = (PersonResponse)obj;
             return PersonId == person.PersonId && PersonName == person.PersonName && Email == person.Email && DateOfBirth == person.DateOfBirth && Gender == person.Gender && CountryId == person.CountryId &&
-                   CountryName == person.CountryName && Address == person.Address && ReceiveNewLetter == person.ReceiveNewLetter && Age == person.Age;
+                   CountryName == person.CountryName && Address == person.Address && ReceiveNewsLetters == person.ReceiveNewsLetters && Age == person.Age;
         }
 
         public override int GetHashCode()
@@ -49,7 +49,7 @@ namespace ServiceContracts.DTO
 
         public override string ToString()
         {
-            return $"Person Name: {PersonName}, Person Id: {PersonId}, Email: {Email}, CountryId:{CountryId}, CountryName: {CountryName}, Gender: {Gender}, Address:{Address}, ReceiveNewLetter:{ReceiveNewLetter}, DateOfBirth: {DateOfBirth?.ToString("dd MMM yyyy")}";
+            return $"Person Name: {PersonName}, Person Id: {PersonId}, Email: {Email}, CountryId:{CountryId}, CountryName: {CountryName}, Gender: {Gender}, Address:{Address}, ReceiveNewsLetters:{ReceiveNewsLetters}, DateOfBirth: {DateOfBirth?.ToString("dd MMM yyyy")}";
         }
 
         public PersonUpdateRequest ToPersonUpdateRequest()
@@ -62,7 +62,7 @@ namespace ServiceContracts.DTO
                 Address = Address,
                 DateOfBirth = DateOfBirth,
                 Gender = (GenderOptions)Enum.Parse(typeof(GenderOptions), Gender),
-                ReceiveNewsLetters = ReceiveNewLetter,
+                ReceiveNewsLetters = ReceiveNewsLetters,
                 CountryId = CountryId
             };
 
@@ -85,7 +85,7 @@ namespace ServiceContracts.DTO
                 Address = person.Address,
                 DateOfBirth = person.DateOfBirth,
                 Email = person.Email,
-                ReceiveNewLetter = person.ReceiveNewLetter,
+                ReceiveNewsLetters = person.ReceiveNewLetter,
                 Gender = person.Gender,
                 Age = (person.DateOfBirth != null)? Math.Round
                     ((DateTime.Now - person.DateOfBirth.Value).TotalDays / 365.25) : null

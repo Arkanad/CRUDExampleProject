@@ -28,6 +28,7 @@ namespace ServiceContracts.DTO
 
         public bool ReceiveNewsLetters { get; set; }
 
+        [Required(ErrorMessage = "CountryId can't be blank")]
         public Guid? CountryId { get; set; }
 
         /// <summary>

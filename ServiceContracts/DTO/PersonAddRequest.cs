@@ -12,13 +12,15 @@ namespace ServiceContracts.DTO
 {
     public class PersonAddRequest
     {
-        [Required]
+        [Required(ErrorMessage = "Person Name is required")]
         [MinLength(3,ErrorMessage = "Name length should have at least 3 characters")]
         public string? PersonName { get; set; }
         [Required]
         [EmailAddress (ErrorMessage = "Email should be in valid format")]
+        [DataType(DataType.DateTime)]
         public string? Email { get; set; }
-        
+
+        [DataType(DataType.DateTime)]
         public DateTime? DateOfBirth { get; set; }
        
         public GenderOptions? Gender { get; set; }
@@ -26,7 +28,8 @@ namespace ServiceContracts.DTO
         public string? Address { get; set; }
         
         public bool ReceiveNewsLetters { get; set; }
-       
+
+        [Required]
         public Guid? CountryId { get; set; }
 
         /// <summary>

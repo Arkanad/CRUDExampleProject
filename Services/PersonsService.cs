@@ -225,10 +225,10 @@ namespace Services
                     => allPersons.OrderBy(temp => temp.Gender).ToList(),
                 (nameof(PersonResponse.Gender), SortOrderOptions.Desc)
                     => allPersons.OrderByDescending(temp => temp.Gender).ToList(),
-                (nameof(PersonResponse.ReceiveNewLetter), SortOrderOptions.Asc)
-                    => allPersons.OrderBy(temp => temp.ReceiveNewLetter).ToList(),
-                (nameof(PersonResponse.ReceiveNewLetter), SortOrderOptions.Desc)
-                    => allPersons.OrderByDescending(temp => temp.ReceiveNewLetter).ToList(),
+                (nameof(PersonResponse.ReceiveNewsLetters), SortOrderOptions.Asc)
+                    => allPersons.OrderBy(temp => temp.ReceiveNewsLetters).ToList(),
+                (nameof(PersonResponse.ReceiveNewsLetters), SortOrderOptions.Desc)
+                    => allPersons.OrderByDescending(temp => temp.ReceiveNewsLetters).ToList(),
                 _ => allPersons
             };
             return sortedPersons;
@@ -261,7 +261,7 @@ namespace Services
             matchingPersonToUpdate.ReceiveNewLetter = personUpdateRequest.ReceiveNewsLetters;
             matchingPersonToUpdate.CountryId = personUpdateRequest.CountryId;
 
-            return matchingPersonToUpdate.ToPersonResponse();
+            return ConvertPersonToPersonResponse(matchingPersonToUpdate);
         }
 
         public bool DeletePerson(Guid? personId)

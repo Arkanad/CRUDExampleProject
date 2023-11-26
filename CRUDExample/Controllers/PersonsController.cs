@@ -67,7 +67,8 @@ namespace CRUDExample.Controllers
                 ViewBag.Errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
                 return View();
             }
-          
+
+            _personService.AddPerson(personAddRequest);
             return RedirectToAction("Index", "Persons");
         }
 
@@ -114,6 +115,39 @@ namespace CRUDExample.Controllers
                 ViewBag.Errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
                 return View();
             }
+        }
+
+
+        [HttpGet]
+        [Route("[action]/{personId}")]
+        public IActionResult Delete(Guid personId)
+        {
+            PersonResponse? personResponse = _personService.GetPersonById(personId);
+            if (personResponse == null)
+            {
+                RedirectToAction("Index");
+            }
+
+            return View(personResponse);
+        }
+
+        [HttpPost]
+        [Route("[action]/{personId}")]
+        public IActionResult Delete(PersonResponse personResponseToDelete)
+        {
+            PersonResponse personResponse = _personService.GetPersonById(personResponseToDelete.PersonId);
+            if (personResponse == null)
+            {
+                RedirectToAction("Index");
+            }
+            if (ModelState.IsValid)
+            {
+                bool isDeletePerson = _personService.DeletePerson(personResponse.PersonId);
+                return RedirectToAction("Index");
+            }
+            
+            return View();
+            
         }
     }
 }

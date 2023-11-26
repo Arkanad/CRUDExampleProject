@@ -20,6 +20,7 @@ namespace ServiceContracts.DTO
         [EmailAddress(ErrorMessage = "Email value should be in a valid email")]
         public string? Email { get; set; }
 
+        [Required(ErrorMessage = "Date of Birth can`t be blank")]
         public DateTime? DateOfBirth { get; set; }
 
         public GenderOptions? Gender { get; set; }

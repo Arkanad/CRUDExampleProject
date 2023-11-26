@@ -37,7 +37,7 @@
                 <label asp-for="DateOfBirth" class="form-label pt">Date of Birth</label>
             </div>
             <div class="flex-1">
-                <input asp-for="DateOfBirth" class="form-input" value="@Model.DateOfBirth.Value"/>
+                <input asp-for="DateOfBirth" class="form-input" value="@Model.DateOfBirth"/>
             </div>
             <span asp-validation-for="DateOfBirth" class="text-red"></span>
         </div>
@@ -75,7 +75,7 @@
             </div>
             <div class="flex-1">
                 <select class="form-input" asp-for="CountryId" asp-items="@ViewBag.Countries">
-                    <option value="">Please Select</option>
+                    <option value="@Model.CountryId">Please Select</option>
                 </select>
                 <span asp-validation-for="CountryId" class="text-red"></span>
             </div>

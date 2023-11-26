@@ -5,7 +5,7 @@
         <i class="fa-solid fa-sort-up"></i>
     </th>
 }
-else if (ViewBag.CurrentSortBy == nameof(PersonResponse.PersonName) && ViewBag.CurrentSortOrder == SortOrderOptions.Desc.ToString())
+else if (ViewBag.CurrentSortBy == ViewBag.ColumnName && ViewBag.CurrentSortOrder == SortOrderOptions.Desc.ToString())
 {
     <th>
         <a href="~/persons/index?sortBy=@ViewBag.ColumnName&sortOrder=@nameof(SortOrderOptions.Asc)&searchBy=@ViewBag.CurrentSearchBy&searchString=@ViewBag.CurrentSearchString">@ViewBag.DisplayName</a>

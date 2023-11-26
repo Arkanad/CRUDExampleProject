@@ -111,15 +111,13 @@ namespace Services
                 Email = personAddRequest.Email,
                 Address = personAddRequest.Address,
                 DateOfBirth = personAddRequest.DateOfBirth,
-                CountryId = Guid.NewGuid(),
+                CountryId = personAddRequest.CountryId,
                 Gender = personAddRequest.Gender.ToString()
             };
 
             _persons.Add(person);
             return ConvertPersonToPersonResponse(person);
         }
-
-        
 
         public List<PersonResponse> GetAllPersons()
         {

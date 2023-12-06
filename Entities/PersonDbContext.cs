@@ -20,7 +20,7 @@ namespace Entities
 
         public DbSet<Person> Persons { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) //Этот метод вызывается, если модель для производного контекста была инициализирована
+        protected override void OnModelCreating(ModelBuilder modelBuilder) //Цей метод викликається, якщо модель для похідного контексту була ініціалізована
         {
             base.OnModelCreating(modelBuilder);
 

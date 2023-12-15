@@ -85,7 +85,7 @@ namespace ServiceContracts.DTO
                 Address = person.Address,
                 DateOfBirth = person.DateOfBirth,
                 Email = person.Email,
-                ReceiveNewsLetters = person.ReceiveNewLetter,
+                ReceiveNewsLetters = person.ReceiveNewsLetters,
                 Gender = person.Gender,
                 CountryId = person.CountryId,
                 Age = (person.DateOfBirth != null)? Math.Round

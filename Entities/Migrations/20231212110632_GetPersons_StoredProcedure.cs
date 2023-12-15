@@ -11,21 +11,17 @@ namespace Entities.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             string sp_GetAllPersons = @"CREATE PROCEDURE [dbo].[GetAllPersons]
-            AS BEGIN
-SELECT PersonId, PersonName, Address, ReceiveNewsLetters, Gender, CountryId FROM [dbo].[Persons]
-END
-";
+             AS BEGIN
+             SELECT PersonName, PersonId, Email, Address, DateOfBirth, Gender, CountryId, ReceiveNewsLetters FROM [dbo].[Persons]
+             END";
+            migrationBuilder.Sql(sp_GetAllPersons);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            string sp_GetAllPersons = @"DROP PROCEDURE [dbo].[GetAllPersons]
-            AS BEGIN
-SELECT PersonId, PersonName, Address, ReceiveNewsLetters, Gender, CountryId FROM [dbo].[Persons]
-END
-";
+            string sp_GetAllPersons = @"DROP PROCEDURE [dbo].[GetAllPersons]";
+            migrationBuilder.Sql(sp_GetAllPersons);
         }
-    }
     }
 }

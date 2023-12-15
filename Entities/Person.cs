@@ -24,7 +24,8 @@ namespace Entities
         [StringLength(200)]
         public string? Address { get; set; }
         //bit
-        public bool ReceiveNewLetter { get; set; }
- 
+        public bool ReceiveNewsLetters{ get; set; }
+
+     
     }
 }

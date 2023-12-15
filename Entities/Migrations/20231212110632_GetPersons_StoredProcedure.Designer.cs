@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entities.Migrations
 {
     [DbContext(typeof(PersonDbContext))]
-    [Migration("20231129112653_Initial")]
-    partial class Initial
+    [Migration("20231212110632_GetPersons_StoredProcedure")]
+    partial class GetPersons_StoredProcedure
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -94,7 +94,7 @@ namespace Entities.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
-                    b.Property<bool>("ReceiveNewLetter")
+                    b.Property<bool>("ReceiveNewsLetters")
                         .HasColumnType("bit");
 
                     b.HasKey("PersonId");
@@ -110,7 +110,7 @@ namespace Entities.Migrations
                             Email = "mwebsdale0@people.com.cn",
                             Gender = "Female",
                             PersonName = "Marguerite",
-                            ReceiveNewLetter = false
+                            ReceiveNewsLetters = false
                         },
                         new
                         {
@@ -120,7 +120,7 @@ namespace Entities.Migrations
                             Email = "ushears1@globo.com",
                             Gender = "Female",
                             PersonName = "Ursa",
-                            ReceiveNewLetter = false
+                            ReceiveNewsLetters = false
                         },
                         new
                         {
@@ -130,7 +130,7 @@ namespace Entities.Migrations
                             Email = "fbowsher2@howstuffworks.com",
                             Gender = "Male",
                             PersonName = "Franchot",
-                            ReceiveNewLetter = false
+                            ReceiveNewsLetters = true
                         },
                         new
                         {
@@ -140,7 +140,7 @@ namespace Entities.Migrations
                             Email = "asarvar3@dropbox.com",
                             Gender = "Male",
                             PersonName = "Angie",
-                            ReceiveNewLetter = false
+                            ReceiveNewsLetters = true
                         },
                         new
                         {
@@ -150,7 +150,7 @@ namespace Entities.Migrations
                             Email = "ttregona4@stumbleupon.com",
                             Gender = "Gender",
                             PersonName = "Tani",
-                            ReceiveNewLetter = false
+                            ReceiveNewsLetters = false
                         },
                         new
                         {
@@ -160,7 +160,7 @@ namespace Entities.Migrations
                             Email = "mlingfoot5@netvibes.com",
                             Gender = "Male",
                             PersonName = "Mitchael",
-                            ReceiveNewLetter = false
+                            ReceiveNewsLetters = false
                         },
                         new
                         {
@@ -170,7 +170,7 @@ namespace Entities.Migrations
                             Email = "mjarrell6@wisc.edu",
                             Gender = "Male",
                             PersonName = "Maddy",
-                            ReceiveNewLetter = false
+                            ReceiveNewsLetters = true
                         },
                         new
                         {
@@ -180,7 +180,7 @@ namespace Entities.Migrations
                             Email = "pretchford7@virginia.edu",
                             Gender = "Female",
                             PersonName = "Pegeen",
-                            ReceiveNewLetter = false
+                            ReceiveNewsLetters = true
                         },
                         new
                         {
@@ -190,7 +190,7 @@ namespace Entities.Migrations
                             Email = "hmosco8@tripod.com",
                             Gender = "Male",
                             PersonName = "Hansiain",
-                            ReceiveNewLetter = false
+                            ReceiveNewsLetters = true
                         },
                         new
                         {
@@ -200,7 +200,7 @@ namespace Entities.Migrations
                             Email = "lwoodwing9@wix.com",
                             Gender = "Male",
                             PersonName = "Lombard",
-                            ReceiveNewLetter = false
+                            ReceiveNewsLetters = false
                         },
                         new
                         {
@@ -210,7 +210,7 @@ namespace Entities.Migrations
                             Email = "mconachya@va.gov",
                             Gender = "Female",
                             PersonName = "Minta",
-                            ReceiveNewLetter = false
+                            ReceiveNewsLetters = true
                         },
                         new
                         {
@@ -220,7 +220,7 @@ namespace Entities.Migrations
                             Email = "vklussb@nationalgeographic.com",
                             Gender = "Female",
                             PersonName = "Verene",
-                            ReceiveNewLetter = false
+                            ReceiveNewsLetters = true
                         });
                 });
 #pragma warning restore 612, 618

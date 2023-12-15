@@ -42,8 +42,9 @@ namespace Services
                 Gender = personAddRequest.Gender.ToString()
             };
 
-            db.Persons.Add(person);
-            db.SaveChanges();
+            //db.Persons.Add(person);
+            //db.SaveChanges();
+            db.sp_InsertPerson(person);
             return ConvertPersonToPersonResponse(person);
         }
 
@@ -185,7 +186,7 @@ namespace Services
             matchingPersonToUpdate.DateOfBirth = personUpdateRequest.DateOfBirth;
             matchingPersonToUpdate.Email = personUpdateRequest.Email;
             matchingPersonToUpdate.Gender = personUpdateRequest.Gender.ToString();
-            matchingPersonToUpdate.ReceiveNewLetter = personUpdateRequest.ReceiveNewsLetters;
+            matchingPersonToUpdate.ReceiveNewsLetters = personUpdateRequest.ReceiveNewsLetters;
             matchingPersonToUpdate.CountryId = personUpdateRequest.CountryId;
 
             db.SaveChanges();

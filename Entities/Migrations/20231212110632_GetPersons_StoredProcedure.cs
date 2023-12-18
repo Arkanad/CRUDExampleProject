@@ -12,7 +12,7 @@ namespace Entities.Migrations
         {
             string sp_GetAllPersons = @"CREATE PROCEDURE [dbo].[GetAllPersons]
              AS BEGIN
-             SELECT PersonName, PersonId, Email, Address, DateOfBirth, Gender, CountryId, ReceiveNewsLetters FROM [dbo].[Persons]
+             SELECT PersonId, PersonName, Email, DateOfBirth, Gender, CountryId, Address, ReceiveNewsLetters FROM [dbo].[Persons]
              END";
             migrationBuilder.Sql(sp_GetAllPersons);
         }

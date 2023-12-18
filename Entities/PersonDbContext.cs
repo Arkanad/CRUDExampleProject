@@ -32,7 +32,7 @@ namespace Entities
 
             //Seed to Countries
             string _countries = File.ReadAllText("countries.json");
-            List<Country> countries = JsonSerializer.Deserialize<List<Country>>(_countries);
+            List<Country>? countries = JsonSerializer.Deserialize<List<Country>>(_countries);
             foreach (Country country in countries)
             {
                 modelBuilder.Entity<Country>().HasData(country);
@@ -40,7 +40,7 @@ namespace Entities
 
             //Seed to Persons
             string _persons = File.ReadAllText("persons.json");
-            List<Person> persons = JsonSerializer.Deserialize<List<Person>>(_persons);
+            List<Person>? persons = JsonSerializer.Deserialize<List<Person>>(_persons);
             foreach (Person person in persons)
             {
                 modelBuilder.Entity<Person>().HasData(person);

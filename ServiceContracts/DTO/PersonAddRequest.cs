@@ -17,7 +17,6 @@ namespace ServiceContracts.DTO
         public string? PersonName { get; set; }
         [Required]
         [EmailAddress (ErrorMessage = "Email should be in valid format")]
-        [DataType(DataType.DateTime)]
         public string? Email { get; set; }
 
         [Required]

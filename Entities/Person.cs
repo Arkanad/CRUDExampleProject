@@ -16,6 +16,7 @@ namespace Entities
         [StringLength(40)]
         public string? Email { get; set; }
         /**/
+
         public DateTime? DateOfBirth { get; set; }
         [StringLength(10)]
         public string? Gender { get; set; }
@@ -26,6 +27,7 @@ namespace Entities
         //bit
         public bool ReceiveNewsLetters{ get; set; }
 
+      //  public string? TIN { get; set; }
      
     }
 }

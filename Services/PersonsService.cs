@@ -66,7 +66,7 @@ namespace Services
 
             return person.ToPersonResponse();
         }
-
+        
         public List<PersonResponse> GetFilteredPersons(string? searchBy, string? searchString)
         {
             List<PersonResponse> allPersons = GetAllPersons();

@@ -33,6 +33,7 @@ namespace ServiceContracts.DTO
         [Required]
         public Guid? CountryId { get; set; }
 
+
         /// <summary>
         /// Converts the current object of PersonAddRequest into a new object of Person type
         /// </summary>
@@ -47,7 +48,8 @@ namespace ServiceContracts.DTO
                 Gender = Gender.ToString(),
                 Address = Address,
                 ReceiveNewsLetters = ReceiveNewsLetters,
-                CountryId = CountryId
+                CountryId = CountryId,
+
             };
         }
     }

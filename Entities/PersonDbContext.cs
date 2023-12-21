@@ -43,11 +43,17 @@ namespace Entities
             List<Person>? persons = JsonSerializer.Deserialize<List<Person>>(_persons);
             foreach (Person person in persons)
             {
+                person.CountryId = person.CountryId;
                 modelBuilder.Entity<Person>().HasData(person);
             }
 
             //fluent API
             //modelBuilder.Entity<Person>().Property(temp => temp.TIN);
+
+            modelBuilder.Entity<Person>().Property(temp => temp.TIN)
+                .HasColumnName("TaxIdentificationNumber")
+                .HasColumnType("varchar(10)")
+                .HasDefaultValue("ABC1234567");
         }
 
         public List<Person> sp_GetAllPersons()

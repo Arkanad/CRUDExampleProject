@@ -32,7 +32,7 @@ namespace Services
         {
             ValidationHelper.ModelValidation(personAddRequest);
 
-            Person person = new Person(){
+            Person person = new Person() {
                 PersonName = personAddRequest.PersonName,
                 PersonId = Guid.NewGuid(),
                 Email = personAddRequest.Email,
@@ -212,5 +212,16 @@ namespace Services
 
             return true;
         }
+
+        //public string GenerateTIN()
+        //{
+        //    int length = 10;
+        //    var random = new Random();
+
+        //    string s = string.Empty;
+        //    for (int i = 0; i < length; i++)
+        //        s = String.Concat(s, random.Next(10).ToString());
+        //    return s;
+        //}
     }
 }

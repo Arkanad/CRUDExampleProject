@@ -34,6 +34,13 @@ namespace Entities.Migrations
             migrationBuilder.UpdateData(
                 table: "Persons",
                 keyColumn: "PersonId",
+                keyValue: new Guid("19fce3c7-24e2-4e0a-a597-449e9bc3b21c"),
+                column: "TIN",
+                value: null);
+
+            migrationBuilder.UpdateData(
+                table: "Persons",
+                keyColumn: "PersonId",
                 keyValue: new Guid("28d11936-9466-4a4b-b9c5-2f0a8e0cbde9"),
                 column: "TIN",
                 value: null);
@@ -63,13 +70,6 @@ namespace Entities.Migrations
                 table: "Persons",
                 keyColumn: "PersonId",
                 keyValue: new Guid("89e5f445-d89f-4e12-94e0-5ad5b235d704"),
-                column: "TIN",
-                value: null);
-
-            migrationBuilder.UpdateData(
-                table: "Persons",
-                keyColumn: "PersonId",
-                keyValue: new Guid("a3b9833b-8a4d-43e9-8690-61e08df81a9a"),
                 column: "TIN",
                 value: null);
 

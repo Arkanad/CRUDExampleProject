@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Entities.Migrations
 {
-    [DbContext(typeof(PersonDbContext))]
+    [DbContext(typeof(PersonsDbContext))]
     [Migration("20231220203956_GetPersons_WithTIN_StoredProcedure")]
     partial class GetPersons_WithTIN_StoredProcedure
     {

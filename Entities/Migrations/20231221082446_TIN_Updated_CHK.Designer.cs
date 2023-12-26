@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entities.Migrations
 {
     [DbContext(typeof(PersonsDbContext))]
-    [Migration("20231220141213_InsertPerson_StoredProcedure")]
-    partial class InsertPerson_StoredProcedure
+    [Migration("20231221082446_TIN_Updated_CHK")]
+    partial class TIN_Updated_CHK
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -103,11 +103,17 @@ namespace Entities.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("TIN")
-                        .HasColumnType("nvarchar(max)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("varchar(10)")
+                        .HasDefaultValue("ABC1234567")
+                        .HasColumnName("TaxIdentificationNumber");
 
                     b.HasKey("PersonId");
 
-                    b.ToTable("Persons", (string)null);
+                    b.ToTable("Persons", null, t =>
+                        {
+                            t.HasCheckConstraint("CHK_TIN", "len([TaxIdentificationNumber]) = 8");
+                        });
 
                     b.HasData(
                         new

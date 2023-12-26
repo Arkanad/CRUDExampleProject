@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Entities.Migrations
 {
-    [DbContext(typeof(PersonDbContext))]
+    [DbContext(typeof(PersonsDbContext))]
     partial class PersonDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -107,7 +107,10 @@ namespace Entities.Migrations
 
                     b.HasKey("PersonId");
 
-                    b.ToTable("Persons", (string)null);
+                    b.ToTable("Persons", null, t =>
+                        {
+                            t.HasCheckConstraint("CHK_TIN", "len([TaxIdentificationNumber]) = 8");
+                        });
 
                     b.HasData(
                         new

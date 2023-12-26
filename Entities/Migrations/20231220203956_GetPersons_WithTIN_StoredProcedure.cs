@@ -18,7 +18,7 @@ namespace Entities.Migrations
       ";
             migrationBuilder.Sql(sp_GetAllPersons);
         }
-
+        
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {

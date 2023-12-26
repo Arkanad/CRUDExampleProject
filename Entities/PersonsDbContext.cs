@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class PersonDbContext: DbContext 
+    public class PersonsDbContext: DbContext 
     {
-        public PersonDbContext(DbContextOptions options) : base(options)
+        public PersonsDbContext(DbContextOptions options) : base(options)
         {
 
         }
@@ -23,6 +23,7 @@ namespace Entities
 
         public DbSet<Person> Persons { get; set; }
 
+        [Obsolete]
         protected override void OnModelCreating(ModelBuilder modelBuilder) //Цей метод викликається, якщо модель для похідного контексту була ініціалізована
         {
             base.OnModelCreating(modelBuilder);
@@ -54,6 +55,10 @@ namespace Entities
                 .HasColumnName("TaxIdentificationNumber")
                 .HasColumnType("varchar(10)")
                 .HasDefaultValue("ABC1234567");
+
+            //modelBuilder.Entity<Person>().HasIndex(temp => temp.TIN).IsUnique(); required and unique
+
+            modelBuilder.Entity<Person>().HasCheckConstraint("CHK_TIN", "len([TaxIdentificationNumber]) = 10");
         }
 
         public List<Person> sp_GetAllPersons()
@@ -75,8 +80,6 @@ namespace Entities
       };
 
             return Database.ExecuteSqlRaw("EXECUTE [dbo].[InsertPerson] @PersonId, @PersonName, @Email, @DateOfBirth, @Gender, @CountryId, @Address, @ReceiveNewsLetters", parameters);
-            //@PersonName nvarchar(40), @PersonId uniqueidentifier, @Email nvarchar(50), @Address nvarchar(1000), @DateOfBirth datetime2(7), @Gender nvarchar(10), @CountryId uniqueidentifier, @ReceiveNewsLetters bit
-
         }
     }
 }

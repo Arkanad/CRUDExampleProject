@@ -10,6 +10,7 @@ builder.Services.AddScoped<ICountriesService, CountriesService>();
 builder.Services.AddScoped<IPersonsService, PersonsService>();
 
 
+
 builder.Services.AddDbContext<PersonsDbContext>(option =>
 {
     option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -22,6 +23,8 @@ if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
 }
+
+Rotativa.AspNetCore.RotativaConfiguration.Setup("wwwroot", wkhtmltopdfRelativePath: "Rotativa");
 
 app.UseStaticFiles();
 app.UseRouting();

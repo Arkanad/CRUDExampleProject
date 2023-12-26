@@ -1,6 +1,7 @@
 ﻿using Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Rotativa.AspNetCore;
 using ServiceContracts;
 using ServiceContracts.DTO;
 using ServiceContracts.Enums;
@@ -148,6 +149,20 @@ namespace CRUDExample.Controllers
             
             return View();
             
+        }
+
+        [Route("PersonsPDF")]
+        public async Task<IActionResult> PersonsToPdf() 
+        {
+            //Get list of persons
+            List<PersonResponse> personResponsesList = await _personService.GetAllPersons();
+            return new ViewAsPdf("PersonsPDF", personResponsesList, ViewData) {
+                PageMargins = new Rotativa.AspNetCore.Options.Margins()
+                {
+                    Top = 15, Right = 15, Left = 15, Bottom = 15
+                },
+                PageOrientation = Rotativa.AspNetCore.Options.Orientation.Landscape
+            };
         }
     }
 }
